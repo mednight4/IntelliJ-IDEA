@@ -23,8 +23,35 @@ public class TicketSellTest implements Runnable{
         Li=new Thread(t);
         Wang=new Thread(t);
         Seller=new TicketSell();
-        Li.start();
-        Zhang.start();
-        Wang.start();
+        int [] order=new int [3];
+        for (int i:order){
+            //(数据类型)(最小值+Math.random()*(最大值-最小值+1))
+            //产生（min，max）区间任意数
+        order[i]=(int)(1+Math.random()*(3-2+1));
+        }
+        if ((order[0]>=order[1])&&(order[0]>=order[2])){
+            Li.start();
+            if (order[1]>=order[2]){
+                Zhang.start();
+                Wang.start();}
+            else {Wang.start();
+                Zhang.start();}
+        }
+        else if ((order[1]>=order[0])&&(order[1]>=order[2])) {
+            Zhang.start();
+            if (order[0] >= order[2]){
+                Li.start();
+                Wang.start();}
+            else {Wang.start();
+                Li.start();}
+        }
+        else{
+            Wang.start();
+            if (order[0] >= order[1]){
+                Li.start();
+                Zhang.start();}
+            else {Zhang.start();
+            Li.start();}
+        }
     }
 }
