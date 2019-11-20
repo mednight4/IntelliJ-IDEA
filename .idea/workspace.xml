@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c20337a5-e199-42db-bbd6-7d134264cb15" name="默认更改列表" comment="" />
+    <list default="true" id="c20337a5-e199-42db-bbd6-7d134264cb15" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/src/java的多线程控制/TicketSellTest/TicketSell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java的多线程控制/TicketSellTest/TicketSellTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="COMPILER_PROCESS_ADDITIONAL_VM_OPTIONS" value="-Dfile.encoding=UTF-8" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -26,7 +33,7 @@
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -40,7 +47,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.dialog">
+  <component name="RunManager" selected="Application.TicketSellTest">
     <configuration name="计算素数" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="java的多线程控制.实例_计算素数.计算素数" />
       <module name="IntelliJ IDEA" />
@@ -67,9 +74,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TicketSellTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="java的多线程控制.TicketSellTest.TicketSellTest" />
+      <module name="IntelliJ IDEA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="java的多线程控制.TicketSellTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="dialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI图形界面.简单窗口创建.dialog" />
       <module name="IntelliJ IDEA" />
+      <option name="PROGRAM_PARAMETERS" value="-Dfile.encoding=GB18030" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="GUI图形界面.简单窗口创建.*" />
@@ -80,8 +101,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.dialog" />
+      <item itemvalue="Application.继承Thread类_计算素数" />
+      <item itemvalue="Application.计算素数" />
+      <item itemvalue="Application.TicketSellTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TicketSellTest" />
         <item itemvalue="Application.dialog" />
         <item itemvalue="Application.继承Thread类_计算素数" />
         <item itemvalue="Application.计算素数" />
@@ -132,5 +160,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="同步" />
     <option name="LAST_COMMIT_MESSAGE" value="同步" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/IntelliJ_IDEA$dialog.ic" NAME="dialog Coverage Results" MODIFIED="1574135036398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>GUI图形界面.简单窗口创建.*</FILTER>
+    </SUITE>
   </component>
 </project>
