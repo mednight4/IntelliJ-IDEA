@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c20337a5-e199-42db-bbd6-7d134264cb15" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/src/GUI图形界面/菜单栏/TextEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java的多线程控制/TicketSellTest/TicketSellTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java的多线程控制/TicketSellTest/TicketSellTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +29,7 @@
     <ConfirmationsSetting value="2" id="添加" />
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -46,13 +47,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TicketSellTest">
+  <component name="RunManager" selected="Application.TextEditor">
     <configuration name="计算素数" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="java的多线程控制.实例_计算素数.计算素数" />
       <module name="IntelliJ IDEA" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="java的多线程控制.实例_计算素数.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TextEditor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI图形界面.菜单栏.TextEditor" />
+      <module name="IntelliJ IDEA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI图形界面.菜单栏.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,9 +119,11 @@
       <item itemvalue="Application.继承Thread类_计算素数" />
       <item itemvalue="Application.计算素数" />
       <item itemvalue="Application.TicketSellTest" />
+      <item itemvalue="Application.TextEditor" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TextEditor" />
         <item itemvalue="Application.TicketSellTest" />
         <item itemvalue="Application.dialog" />
         <item itemvalue="Application.继承Thread类_计算素数" />
@@ -147,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574210684241</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="同步">
+      <created>1574212770892</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574212770892</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
