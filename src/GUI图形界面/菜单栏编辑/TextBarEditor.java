@@ -50,8 +50,8 @@ public class TextBarEditor extends Frame implements ActionListener{
         file.add(cl);
         file.add(sf);
         file.add(ex);
-        mainmenubar.add(editor);
         mainmenubar.add(file);//将主菜单项加入到主菜单栏中
+        mainmenubar.add(editor);
         setMenuBar(mainmenubar);//为窗体设置主菜单
         nw.addActionListener(this);//为各菜单项注册事件侦听器
         op.addActionListener(this);//为各菜单项注册事件侦听器
