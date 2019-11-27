@@ -17,6 +17,7 @@ public class TextBarEditor extends Frame implements ActionListener{
     MenuItem sf;
     MenuItem ex;
     TextArea tx;//申明文本区对象
+    String copy="";
     public TextBarEditor(String title){
         super (title);//调用父类构造方法
         GUI图形界面.菜单栏编辑.CloseHandler handler=new GUI图形界面.菜单栏编辑.CloseHandler();//定义窗体事件的侦听器对象
@@ -33,17 +34,17 @@ public class TextBarEditor extends Frame implements ActionListener{
         mainmenubar = new MenuBar();//定义主菜单栏
         file = new Menu("文件");
         editor=new Menu("编辑");
-        cp=new MenuItem("编辑");
+        cp=new MenuItem("复制");
         ct=new MenuItem("剪贴");
-        pa=new MenuItem("复制");
+        pa=new MenuItem("粘贴");
         nw = new MenuItem("新建");
         op = new MenuItem("打开");
         cl = new MenuItem("关闭");
         sf = new MenuItem("保存");
         ex = new MenuItem("退出");
-        editor.add(pa);//将各子菜单项加入到主菜单项中
         editor.add(cp);
         editor.add(ct);
+        editor.add(pa);//将各子菜单项加入到主菜单项中
         file.add(nw);//将各子菜单项加入到主菜单项中
         file.add(op);
         file.add(cl);
@@ -65,7 +66,6 @@ public class TextBarEditor extends Frame implements ActionListener{
     public void actionPerformed(ActionEvent e){
         Object ob=e.getSource();//获取事件对象
         JFileChooser f=new JFileChooser();//创建文件选择器对象
-        String copy="";
         if ((ob==nw)||(ob==cl)){
             //选择"新建文件"或者"关闭文件"子菜单项
             tx.setText("");//清空文本区
@@ -109,7 +109,7 @@ public class TextBarEditor extends Frame implements ActionListener{
             copy=tx.getText();
             tx.setText("");//清空文本区
         }else if(ob==pa){
-            tx.setText(copy);
+            tx.append(copy);
         }
     }
 
