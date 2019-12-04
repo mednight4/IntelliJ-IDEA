@@ -112,12 +112,11 @@ public class TextBarEditor extends Frame implements ActionListener{
             tx.append(copy);
         }
     }
-
-
     public static void main(String[] args){
         new GUI图形界面.菜单栏编辑.TextBarEditor("简易文本编辑器");
     }
 }
+
 //CloseHandler类实现关闭文件窗口的功能
 class CloseHandler extends WindowAdapter{
     //继承适配器类
