@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c20337a5-e199-42db-bbd6-7d134264cb15" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI图形界面/个人信息调查表/Questionnaire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI图形界面/企业信息调查表/企业信息调查表.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI图形界面/菜单栏编辑/TextBarEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI图形界面/菜单栏编辑/TextBarEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/选择框打勾/UserLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI图形界面/选择框打勾/UserLogin.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +26,12 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="添加" />
   </component>
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -40,18 +39,6 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.企业信息调查表">
     <configuration name="企业信息调查表 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -114,11 +101,11 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.TextBarEditor" />
-      <item itemvalue="Application.企业信息调查表" />
       <item itemvalue="Application.企业信息调查表 (1)" />
-      <item itemvalue="Application.dialog" />
+      <item itemvalue="Application.TextBarEditor" />
       <item itemvalue="Application.TextEditor" />
+      <item itemvalue="Application.企业信息调查表" />
+      <item itemvalue="Application.dialog" />
     </list>
     <recent_temporary>
       <list>
@@ -129,6 +116,18 @@
         <item itemvalue="Application.企业信息调查表 (1)" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -211,7 +210,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575422347600</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="同步">
+      <created>1575422374887</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575422374887</updated>
+    </task>
+    <task id="LOCAL-00012" summary="同步">
+      <created>1575422402069</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1575422402069</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
