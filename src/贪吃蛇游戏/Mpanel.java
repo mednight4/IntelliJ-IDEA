@@ -28,7 +28,7 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
     int[] score ={0,0};
     int[][] snakex = new int[2][750];
     int[][] snakey = new int[2][750];
-    String[] fx = {"R","R"}; //方向:R, L, U, D
+    String[] fx={"R","R"}; //方向:R, L, U, D
     boolean isStarted = false;
     boolean isFailed = false;
     Timer timer = new Timer(100, this);
@@ -40,7 +40,7 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
     public Mpanel(int player,Msnack msnack) {
         this.msnack=msnack;
         this.player=player;
-        failure=0;
+        failure=0;//默认一号玩家，因为直接将order（从零开始）赋给failure
         initSnake(player);
         this.setFocusable(true);
         this.addKeyListener(this);
@@ -51,11 +51,11 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
         {
             len[order] = 3;
             snakex[order][0] = 100;
-            snakey[order][0] = 200+(order)*50;
+            snakey[order][0] = 200+(order)*25;
             snakex[order][1] = 75;
-            snakey[order][1] = 200+(order)*50;
+            snakey[order][1] = 200+(order)*25;
             snakex[order][2] = 50;
-            snakey[order][2] = 200+(order)*50;
+            snakey[order][2] = 200+(order)*25;
             fx[order]= "R";
             score[order] = 0;
         }
@@ -141,7 +141,13 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
             msnack.frame.setVisible(false);
             msnack.setVisible(true);
             msnack.gameover=true;
-            initSnake(player);
+            initSnake(1);
+            initSnake(2);
+            if (player==1){
+                msnack.record(score[0],len[0]);
+            }else if(player==2){
+                msnack.winner(score,len,failure);
+            }
             isFailed=!isFailed;
             isStarted=!isStarted;
         }
@@ -184,7 +190,6 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
                         failure=order;
                     }
                 }
-
                 if (snakex[order][0] == foodx && snakey[order][0] == foody) {
                     len[order]++;
                     score[order] = score[order] + 10;
@@ -195,6 +200,7 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
                 for (int i = 1; i < len[order]; i++) {
                     if (snakex[order][i] == snakex[order][0] && snakey[order][i] == snakey[order][0]) {
                         isFailed = true;
+                        failure=order;
                     }
                 }
             }

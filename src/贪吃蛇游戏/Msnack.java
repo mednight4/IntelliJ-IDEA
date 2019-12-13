@@ -10,13 +10,13 @@ public class Msnack extends Frame implements ActionListener {
     Menu mode;
     Menu about;
     MenuItem newgame;
-    MenuItem pause;
     MenuItem oneplayer;
     MenuItem mutiplayer;
     MenuItem instruction;
     TextArea tx;
     JFrame frame;
     Mpanel mpanel;
+
     int player;
     boolean gameover;
 
@@ -32,14 +32,19 @@ public class Msnack extends Frame implements ActionListener {
         tx.setEditable(false);
         setVisible(true);
 
-        player=1;
+        player=1;//默认一个玩家
+        newFrame();
         gameover=false;
+    }
 
+    public void newFrame(){
         frame = new JFrame();
         frame.setBounds(10, 10, 900, 720);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(false);
+        mpanel=new Mpanel(player,this);
+        frame.add(mpanel);
     }
 
     public void menuinit(){
@@ -59,7 +64,6 @@ public class Msnack extends Frame implements ActionListener {
         mode.add(mutiplayer);
         about.add(instruction);
 
-
         mainmenubar.add(game);
         mainmenubar.add(mode);
         mainmenubar.add(about);
@@ -68,37 +72,31 @@ public class Msnack extends Frame implements ActionListener {
         newgame.addActionListener(this);//为各菜单项注册事件侦听器
         oneplayer.addActionListener(this);//为各菜单项注册事件侦听器
         mutiplayer.addActionListener(this);//为各菜单项注册事件侦听器
-        instruction.addActionListener(this);
+        instruction.addActionListener(this);//为各菜单项注册事件侦听器
     }
 
     public void actionPerformed(ActionEvent actionEvent) {
         Object ob=actionEvent.getSource();
         if (ob==newgame){
-            this.mpanel=new Mpanel(player,this);
-            frame.add(mpanel);
-            tx.setText("启动游戏中。。。");
             frame.setVisible(true);
+            mpanel.setFocusable(true);
+            tx.setText("启动游戏中。。。");
             this.setVisible(false);
         }else if (ob==oneplayer) {
-            tx.setText("\t单人游戏模式：\n\t只有一条虫\n操作：\t向上：W\t\t向下：S\n\t向左：A\t\t向右：D\n\n\t暂停：SPACE");
+            tx.setText("单人游戏模式：\n只有一条虫\n操作：\t向上：W\t\t向下：S\n\t向左：A\t\t向右：D\n\n\t暂停：SPACE");
             player=1;
+            mpanel.player=1;
         }else if (ob==mutiplayer) {
-            tx.setText("\t双人游戏模式：\n\t有两条虫\nplayer2：向上：up\t\t向下：down\n\t向左：left\t\t向右：right\n\n\t撞到、就会去世！");
+            tx.setText("双人游戏模式：\n有两条虫\n玩家2：\t向上：up\t向下：down\n\t向左：left\t向右：right\n\n\t撞到、就会去世！");
             player=2;
+            mpanel.player=2;
         }else if (ob==instruction) {
             tx.setText("\t项目：贪吃蛇游戏\n\tBY：李思\n\t班级：信息安全182班\n\t学号：8003118045");
-        }
-        else if(gameover==true){
-            if (player==1){
-                this.record(mpanel.score[0],mpanel.len[0]);
-            }else if(player==2){
-                this.winner(mpanel.score,mpanel.len,mpanel.failure);
-            }
         }
     }
 
     public void record(int score,int len){
-        tx.setText("\t你的成绩：\t"+score+"\n你的长度:\t"+len);
+        tx.setText("你的成绩："+score+"\t你的长度:"+len);
     }
 
     public void winner(int[] score,int[] len,int failure){
@@ -106,7 +104,7 @@ public class Msnack extends Frame implements ActionListener {
         if (failure==0) {
             winner=2;
         }
-            tx.setText("\t1号玩家的成绩：\t"+score[0]+"\n\t1号玩家的长度:\t"+len[0]+"\n\t2号玩家的成绩：\t"+score[1]+"\n\t2号玩家的长度:\t"+len[1]+"\n\twinner:\t"+winner+"号玩家");
+        tx.setText("1号玩家的成绩："+score[0]+"\t长度:\n"+len[0]+"\n2号玩家的成绩："+score[1]+"\t长度:"+len[1]+"\n\twinner:"+winner+"号玩家");
 
     }
 
