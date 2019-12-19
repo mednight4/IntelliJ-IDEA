@@ -104,7 +104,7 @@ public class Msnack extends Frame implements ActionListener {
         if (failure==0) {
             winner=2;
         }
-        tx.setText("1号玩家的成绩："+score[0]+"\t长度:\n"+len[0]+"\n2号玩家的成绩："+score[1]+"\t长度:"+len[1]+"\n\twinner:"+winner+"号玩家");
+        tx.setText("1号玩家的成绩："+score[0]+"\t长度:"+len[0]+"\n2号玩家的成绩："+score[1]+"\t长度:"+len[1]+"\nwinner:"+winner+"号玩家");
 
     }
 

@@ -120,7 +120,7 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
             fx[0] = "D";
         }if((fx[0]!="R") &&(keyCode == KeyEvent.VK_A) ) {
             fx[0] = "L";
-        }if((fx[0]!="R")&& (keyCode == KeyEvent.VK_D) ) {
+        }if((fx[0]!="L")&& (keyCode == KeyEvent.VK_D) ) {
             fx[0] = "R";
         }if(  (fx[1]!="R")&&(keyCode == KeyEvent.VK_LEFT)) {
             fx[1] = "L";
@@ -141,13 +141,13 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
             msnack.frame.setVisible(false);
             msnack.setVisible(true);
             msnack.gameover=true;
-            initSnake(1);
-            initSnake(2);
             if (player==1){
                 msnack.record(score[0],len[0]);
             }else if(player==2){
                 msnack.winner(score,len,failure);
             }
+            initSnake(1);
+            initSnake(2);
             isFailed=!isFailed;
             isStarted=!isStarted;
         }
