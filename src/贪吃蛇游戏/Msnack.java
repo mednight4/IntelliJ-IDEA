@@ -18,7 +18,6 @@ public class Msnack extends Frame implements ActionListener {
     Mpanel mpanel;
 
     int player;
-    boolean gameover;
 
     public Msnack(String title){
         super (title);
@@ -34,7 +33,6 @@ public class Msnack extends Frame implements ActionListener {
 
         player=1;//默认一个玩家
         newFrame();
-        gameover=false;
     }
 
     public void newFrame(){
@@ -43,7 +41,7 @@ public class Msnack extends Frame implements ActionListener {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(false);
-        mpanel=new Mpanel(player,this);
+        mpanel=new Mpanel(this);
         frame.add(mpanel);
     }
 
@@ -86,10 +84,12 @@ public class Msnack extends Frame implements ActionListener {
             tx.setText("单人游戏模式：\n只有一条虫\n操作：\t向上：W\t\t向下：S\n\t向左：A\t\t向右：D\n\n\t暂停：SPACE");
             player=1;
             mpanel.player=1;
+            mpanel.initSnake(1);
         }else if (ob==mutiplayer) {
             tx.setText("双人游戏模式：\n有两条虫\n玩家2：\t向上：up\t向下：down\n\t向左：left\t向右：right\n\n\t撞到、就会去世！");
             player=2;
             mpanel.player=2;
+            mpanel.initSnake(2);
         }else if (ob==instruction) {
             tx.setText("\t项目：贪吃蛇游戏\n\tBY：李思\n\t班级：信息安全182班\n\t学号：8003118045");
         }
@@ -104,7 +104,7 @@ public class Msnack extends Frame implements ActionListener {
         if (failure==0) {
             winner=2;
         }
-        tx.setText("1号玩家的成绩："+score[0]+"\t长度:"+len[0]+"\n2号玩家的成绩："+score[1]+"\t长度:"+len[1]+"\nwinner:"+winner+"号玩家");
+        tx.setText("1号玩家的成绩："+score[0]+"\t长度:"+len[0]+"\n2号玩家的成绩："+score[1]+"\t长度:"+len[1]+"\n存活:"+winner+"号玩家");
 
     }
 
