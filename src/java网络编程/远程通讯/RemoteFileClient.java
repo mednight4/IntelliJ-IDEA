@@ -1,6 +1,7 @@
 package java网络编程.远程通讯;
 
 //客户端RemoteFileClient.java
+
 import java.io.*;
 import java.net.*;
 
@@ -9,11 +10,13 @@ public class RemoteFileClient {
     protected PrintWriter socketWriter;
     protected String hostIp;
     protected int hostPort;
+
     // 构造方法
     public RemoteFileClient(String hostIp, int hostPort) {
         this.hostIp = hostIp;
         this.hostPort = hostPort;
     }
+
     // 向服务器请求文件的内容
     public String getFile(String fileNameToGet) {
         StringBuffer fileLines = new StringBuffer();
@@ -28,6 +31,7 @@ public class RemoteFileClient {
         }
         return fileLines.toString();
     }
+
     // 连接到远程服务器
     public void setUpConnection() {
         try {
@@ -43,6 +47,7 @@ public class RemoteFileClient {
             System.out.println("Error2 setting up socket connection: " + e);
         }
     }
+
     // 断开远程服务器
     public void tearDownConnection() {
         try {
@@ -52,8 +57,9 @@ public class RemoteFileClient {
             System.out.println("Error tearing down socket connection: " + e);
         }
     }
-    public static void main(String args[]) {
-        RemoteFileClient remoteFileClient = new RemoteFileClient("localhost",1001);
+
+    public static void main(String[] args) {
+        RemoteFileClient remoteFileClient = new RemoteFileClient("localhost", 1001);
         remoteFileClient.setUpConnection();
         StringBuffer fileContents = new StringBuffer();
         fileContents.append(remoteFileClient.getFile("d:\\test.txt"));

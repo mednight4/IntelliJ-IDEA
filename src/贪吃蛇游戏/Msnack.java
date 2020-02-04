@@ -1,12 +1,15 @@
 package 贪吃蛇游戏;
 
+̰������Ϸ;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 
 public class Msnack extends Frame implements ActionListener {
     MenuBar mainmenubar =new MenuBar();
-    Menu game;
+    Menu game; 
     Menu mode;
     Menu about;
     MenuItem newgame;
@@ -18,21 +21,30 @@ public class Msnack extends Frame implements ActionListener {
     Mpanel mpanel;
 
     int player;
+    int scoreMax;
 
     public Msnack(String title){
         super (title);
-        Msnack.CloseHandler handler=new Msnack.CloseHandler();//定义窗体事件的侦听器对象
-        this.addWindowListener(handler); //为当前窗体注册侦听器对象
+        Msnack.CloseHandler handler=new Msnack.CloseHandler();//���崰���¼�������������
+        this.addWindowListener(handler); //Ϊ��ǰ����ע������������
         setSize(300,200);
         setLocationRelativeTo(null);
         menuinit();
+        try {
+        scoreMax=readRecord();
+        }catch(Exception e) {
+        	scoreMax=0;
+        	System.out.println(e);
+        }
         tx=new TextArea();
         this.add(tx);
         tx.setEditable(false);
         setVisible(true);
+        
 
-        player=1;//默认一个玩家
+        player=1;//Ĭ��һ�����
         newFrame();
+        tx.setText("\t��Ŀ��̰������Ϸ\n\tBY����˼\n\t�༶����Ϣ��ȫ182��\n\tѧ�ţ�8003118045");
     }
 
     public void newFrame(){
@@ -48,14 +60,14 @@ public class Msnack extends Frame implements ActionListener {
     public void menuinit(){
         mainmenubar = new MenuBar();
 
-        game=new Menu ("游戏");
-        mode=new Menu("模式");
-        about=new Menu("关于");
+        game=new Menu ("��Ϸ");
+        mode=new Menu("ģʽ");
+        about=new Menu("����");
 
-        newgame=new MenuItem("新游戏");
-        oneplayer=new MenuItem("单人游戏");
-        mutiplayer=new MenuItem("多人游戏");
-        instruction=new MenuItem("关于");
+        newgame=new MenuItem("����Ϸ");
+        oneplayer=new MenuItem("������Ϸ");
+        mutiplayer=new MenuItem("������Ϸ");
+        instruction=new MenuItem("����");
 
         game.add(newgame);
         mode.add(oneplayer);
@@ -67,50 +79,92 @@ public class Msnack extends Frame implements ActionListener {
         mainmenubar.add(about);
 
         setMenuBar(mainmenubar);
-        newgame.addActionListener(this);//为各菜单项注册事件侦听器
-        oneplayer.addActionListener(this);//为各菜单项注册事件侦听器
-        mutiplayer.addActionListener(this);//为各菜单项注册事件侦听器
-        instruction.addActionListener(this);//为各菜单项注册事件侦听器
+        newgame.addActionListener(this);//Ϊ���˵���ע���¼�������
+        oneplayer.addActionListener(this);//Ϊ���˵���ע���¼�������
+        mutiplayer.addActionListener(this);//Ϊ���˵���ע���¼�������
+        instruction.addActionListener(this);//Ϊ���˵���ע���¼�������
+        
     }
-
+    
+    private int readRecord() throws IOException {
+    	int score=0;
+    	File file=new File("test.txt");
+    	if(!file.exists()) {
+    		file.createNewFile();
+    	}
+    	RandomAccessFile rafile=new RandomAccessFile(file,"rw");
+    	rafile.seek(0);
+		score=rafile.readInt();
+		return score;
+    }	
+    
+    private void writeRecord(int score) throws IOException {
+    	File file=new File("test.txt");
+    	if(!file.exists()) {
+    		file.createNewFile();
+    	}
+    	RandomAccessFile rafile=new RandomAccessFile(file,"rw");
+    	//int ÿ���ַ�4���ֽ� ָ������+4�Ӽ�������������
+    	rafile.seek(0);
+    	rafile.writeInt(score);
+    }
+    
     public void actionPerformed(ActionEvent actionEvent) {
         Object ob=actionEvent.getSource();
         if (ob==newgame){
             frame.setVisible(true);
             mpanel.setFocusable(true);
-            tx.setText("启动游戏中。。。");
+            tx.setText("������Ϸ�С�����");
             this.setVisible(false);
         }else if (ob==oneplayer) {
-            tx.setText("单人游戏模式：\n只有一条虫\n操作：\t向上：W\t\t向下：S\n\t向左：A\t\t向右：D\n\n\t暂停：SPACE");
+            tx.setText("������Ϸģʽ��\nֻ��һ����\n������\t���ϣ�W\t\t���£�S\n\t����A\t\t���ң�D\n\n\t��ͣ��SPACE");
             player=1;
             mpanel.player=1;
             mpanel.initSnake(1);
         }else if (ob==mutiplayer) {
-            tx.setText("双人游戏模式：\n有两条虫\n玩家2：\t向上：up\t向下：down\n\t向左：left\t向右：right\n\n\t撞到、就会去世！");
+            tx.setText("˫����Ϸģʽ��\n��������\n���2��\t���ϣ�up\t���£�down\n\t����left\t���ң�right\n\n\t�Ե��Է�����ȡ���������");
             player=2;
             mpanel.player=2;
             mpanel.initSnake(2);
         }else if (ob==instruction) {
-            tx.setText("\t项目：贪吃蛇游戏\n\tBY：李思\n\t班级：信息安全182班\n\t学号：8003118045");
+            tx.setText("\t��Ŀ��̰������Ϸ\n\tBY����˼\n\t�༶����Ϣ��ȫ182��\n\tѧ�ţ�8003118045");
         }
     }
 
     public void record(int score,int len){
-        tx.setText("你的成绩："+score+"\t你的长度:"+len);
+        tx.setText("��ĳɼ���"+score+"\t��ĳ���:"+len);
+        if (score>scoreMax) {
+        	scoreMax=score;
+        	tx.append("\n\n�¼�¼��"+scoreMax);
+        	try {
+        		writeRecord(score);
+        	}catch(Exception e) {
+            	System.out.println(e);
+            }
+        }
     }
 
     public void winner(int[] score,int[] len,int failure){
         int winner=1;
+        int max=score[0]>score[1]?score[0]:score[1];
         if (failure==0) {
             winner=2;
         }
-        tx.setText("1号玩家的成绩："+score[0]+"\t长度:"+len[0]+"\n2号玩家的成绩："+score[1]+"\t长度:"+len[1]+"\n存活:"+winner+"号玩家");
-
+        tx.setText("1����ҵĳɼ���"+score[0]+"\t����:"+len[0]+"\n2����ҵĳɼ���"+score[1]+"\t����:"+len[1]+"\n���:"+winner+"�����");
+        if(max>scoreMax) {
+        	scoreMax=max;
+        	tx.append("\n\n�¼�¼��"+scoreMax);
+        	try {
+        		writeRecord(max);
+        	}catch(Exception e) {
+            	System.out.println(e);
+            }
+        }
     }
 
 
     public static void main(String[] args) {
-        Msnack msnack =new 贪吃蛇游戏.Msnack("贪吃蛇游戏");
+        Msnack msnack =new ̰������Ϸ.Msnack("̰������Ϸ");
     }
 
     public class CloseHandler extends WindowAdapter{

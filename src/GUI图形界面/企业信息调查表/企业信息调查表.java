@@ -1,7 +1,9 @@
 package GUI图形界面.企业信息调查表;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JOptionPane;
+
 public class 企业信息调查表 extends Frame implements ActionListener {
     TextField name = new TextField(30); // 企业名称，宽度为30
     TextField funds = new TextField(30);// 注册资金
@@ -17,10 +19,11 @@ public class 企业信息调查表 extends Frame implements ActionListener {
     Label l1 = new Label("企业名称"), l2 = new Label("注册资金");
     Label l3 = new Label("员工数量"), l4 = new Label("从事行业");
     Label l5 = new Label("年营业额"), l6 = new Label("利润率");
+
     // 构造方法，用于设置窗体标题、大小，并取消窗体的布局管理器
     public 企业信息调查表(String title) {
         super(title); // 调用父类构造方法
-        GUI图形界面.企业信息调查表.CloseHandler handler=new GUI图形界面.企业信息调查表.CloseHandler();//定义窗体事件的侦听器对象
+        GUI图形界面.企业信息调查表.CloseHandler handler = new GUI图形界面.企业信息调查表.CloseHandler();//定义窗体事件的侦听器对象
         this.addWindowListener(handler); //为当前窗体注册侦听器对象
         this.setSize(400, 400); // 设置窗体的尺寸
         this.setLayout(null); // 取消窗体的布局管理器
@@ -45,18 +48,31 @@ public class 企业信息调查表 extends Frame implements ActionListener {
         btn2.setBounds(180, 300, 50, 20);// 取消
         btn3.setBounds(250, 300, 50, 20);// 退出
         this.add(l);// 将各组件添加到窗体中
-        this.add(l1);		this.add(name);		            this.add(l2);		this.add(funds);
-        this.add(l3);		this.add(employeeCount);		this.add(l4);	    this.add(industry);
-        this.add(l5);		this.add(turnover);		        this.add(l6);		this.add(margin);
-        this.add(btn1);		this.add(btn2);		            this.add(btn3);
+        this.add(l1);
+        this.add(name);
+        this.add(l2);
+        this.add(funds);
+        this.add(l3);
+        this.add(employeeCount);
+        this.add(l4);
+        this.add(industry);
+        this.add(l5);
+        this.add(turnover);
+        this.add(l6);
+        this.add(margin);
+        this.add(btn1);
+        this.add(btn2);
+        this.add(btn3);
         setLocationRelativeTo(null); // 使窗体在屏幕上居中放置
         btn1.addActionListener(this); // 为三个按钮注册事件侦听器
-        btn2.addActionListener(this);		btn3.addActionListener(this);
+        btn2.addActionListener(this);
+        btn3.addActionListener(this);
         employeeCount.addActionListener(this); // 为员工数量文本域注册焦点事件侦听器
         funds.addActionListener(this);// 为注册基金文本域注册焦点事件侦听器
         turnover.addActionListener(this);// 为年企业额文本域注册事件侦听器
         margin.addActionListener(this);// 为利润率文本域注册焦点事件侦听器
     }
+
     // 窗体的ActionEvent事件处理方法
     public void actionPerformed(ActionEvent e) {
         try {
@@ -65,7 +81,7 @@ public class 企业信息调查表 extends Frame implements ActionListener {
             Float.parseFloat(turnover.getText());
             Float.parseFloat(margin.getText());
         } catch (Exception e2) {
-            JOptionPane.showMessageDialog(null, "员工数量和注册基金为整数,年营业额和利润率为浮点数","错误提示", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "员工数量和注册基金为整数,年营业额和利润率为浮点数", "错误提示", JOptionPane.ERROR_MESSAGE);
             employeeCount.setText("50");
             funds.setText("");
             turnover.setText("");
@@ -89,14 +105,16 @@ public class 企业信息调查表 extends Frame implements ActionListener {
             margin.setText("");
         }
     }
+
     public static void main(String[] args) {
         企业信息调查表 app = new 企业信息调查表("企业信息");
         app.setVisible(true);
     }
 }
-class CloseHandler extends WindowAdapter{
+
+class CloseHandler extends WindowAdapter {
     //继承适配器类
-    public void windowClosing (WindowEvent e){
+    public void windowClosing(WindowEvent e) {
         //处理关闭窗口事件的方法
         System.exit(0);//终止当前线程
     }

@@ -1,4 +1,6 @@
 package 贪吃蛇游戏;
+coding
+̰������Ϸ;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -18,8 +20,7 @@ import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 
 public class Mpanel extends JPanel implements KeyListener, ActionListener {
-    ImageIcon title ;
-    ImageIcon body;
+    ImageIcon body;	
     ImageIcon up ;
     ImageIcon down;
     ImageIcon left ;
@@ -28,11 +29,11 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
 
     int player;
     int failure;
-    int[] len= {3,3};
+    int[] len= {10,10};
     int[] score ={0,0};
-    int[][] snakex = new int[2][750];
-    int[][] snakey = new int[2][750];
-    String[] fx={"R","R"}; //方向:R, L, U, D
+    int[][] snakex = new int[2][600];
+    int[][] snakey = new int[2][600];
+    String[] fx={"R","R"}; //����:R, L, U, D
     boolean isStarted = false;
     boolean isFailed = false;
     Timer timer = new Timer(100, this);
@@ -45,11 +46,11 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
     boolean playEat;
 
     public Mpanel(Msnack msnack) {
-        loadSound();
-        loadImages();
-        player=1;
+    	loadSound(); 
+    	loadImages();
+    	player=1;
         this.msnack=msnack;
-        failure=0;//默认一号玩家，因为直接将order（从零开始）赋给failure
+        failure=0;//Ĭ��һ����ң���Ϊֱ�ӽ�order�����㿪ʼ������failure
         initSnake(player);
         this.setFocusable(true);
         this.addKeyListener(this);
@@ -57,77 +58,76 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
         playEat=false;
     }
     private void loadImages() {
-        // TODO 自动生成的方法存根
-        InputStream is;
+		// TODO �Զ����ɵķ������
+    	InputStream is;
         try {
-            is=getClass().getClassLoader().getResourceAsStream("pic/title.jpg");
-            title = new ImageIcon(ImageIO.read(is));
-            is=getClass().getClassLoader().getResourceAsStream("pic/body.png");
-            body = new ImageIcon(ImageIO.read(is));
-            is=getClass().getClassLoader().getResourceAsStream("pic/up.png");
-            up  = new ImageIcon(ImageIO.read(is));
-            is=getClass().getClassLoader().getResourceAsStream("pic/down.png");
-            down = new ImageIcon(ImageIO.read(is));
-            is=getClass().getClassLoader().getResourceAsStream("pic/left.png");
-            left = new ImageIcon(ImageIO.read(is));
-            is=getClass().getClassLoader().getResourceAsStream("pic/right.png");
-            right = new ImageIcon(ImageIO.read(is));
-            is=getClass().getClassLoader().getResourceAsStream("pic/food.png");
-            food = new ImageIcon(ImageIO.read(is));
-        } catch (IOException e) {
-            // TODO 自动生成的 catch 块
-            e.printStackTrace();
-        }
-    }
-
-
-    private void loadSound() {
-        // TODO 自动生成的方法存根
-        try {
-            BGM=AudioSystem.getClip();
-            eat=AudioSystem.getClip();
-            InputStream getbgm=this.getClass().getClassLoader().getResourceAsStream("sound/bgm.wav");
-            AudioInputStream ais=AudioSystem.getAudioInputStream(getbgm);
-            BGM.open(ais);
-            InputStream geteat=this.getClass().getClassLoader().getResourceAsStream("sound/eat.wav");
-            ais=AudioSystem.getAudioInputStream(geteat);
-            eat.open(ais);
-        } catch (LineUnavailableException e) {
-            // TODO 自动生成的 catch 块
-            e.printStackTrace();
-        } catch (UnsupportedAudioFileException e) {
-            // TODO 自动生成的 catch 块
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO 自动生成的 catch 块
-            e.printStackTrace();
-        }
-    }
-
+			is=getClass().getClassLoader().getResourceAsStream("pic/body.png");
+			body = new ImageIcon(ImageIO.read(is));
+			is=getClass().getClassLoader().getResourceAsStream("pic/up.png");
+			up  = new ImageIcon(ImageIO.read(is));
+			is=getClass().getClassLoader().getResourceAsStream("pic/down.png");
+			down = new ImageIcon(ImageIO.read(is));
+			is=getClass().getClassLoader().getResourceAsStream("pic/left.png");
+			left = new ImageIcon(ImageIO.read(is));
+			is=getClass().getClassLoader().getResourceAsStream("pic/right.png");
+			right = new ImageIcon(ImageIO.read(is));
+			is=getClass().getClassLoader().getResourceAsStream("pic/food.png");
+			food = new ImageIcon(ImageIO.read(is));
+		} catch (IOException e) {
+			// TODO �Զ����ɵ� catch ��
+			e.printStackTrace();
+		}	
+	}
+    
+    
+	private void loadSound() {
+		// TODO �Զ����ɵķ������
+		try {
+			BGM=AudioSystem.getClip();
+			eat=AudioSystem.getClip();
+			InputStream getbgm=this.getClass().getClassLoader().getResourceAsStream("sound/bgm.wav");
+			AudioInputStream ais=AudioSystem.getAudioInputStream(getbgm);
+			BGM.open(ais);
+			InputStream geteat=this.getClass().getClassLoader().getResourceAsStream("sound/eat.wav");
+			ais=AudioSystem.getAudioInputStream(geteat);
+			eat.open(ais);
+		} catch (LineUnavailableException e) {
+			// TODO �Զ����ɵ� catch ��
+			e.printStackTrace(); 
+		} catch (UnsupportedAudioFileException e) {
+			// TODO �Զ����ɵ� catch ��
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO �Զ����ɵ� catch ��
+			e.printStackTrace();
+		}
+	}
+    
+	
     private void stopBGM() {
-        // TODO 自动生成的方法存根
-        BGM.stop();
-
-    }
-    private void playBGM() {
-        // TODO 自动生成的方法存根
-        BGM.loop(Clip.LOOP_CONTINUOUSLY);
-    }
-    private void playeat() {
-        // TODO 自动生成的方法存根
-        if(playEat) {
-            eat.loop(Clip.LOOP_CONTINUOUSLY);
-            playEat=!playEat;
-        }else if(!playEat) {
-            eat.stop();
-        }
-    }
-
-
-    public void initSnake(int player) {
+		// TODO �Զ����ɵķ������
+    	BGM.stop();
+		
+	}
+	private void playBGM() {
+		// TODO �Զ����ɵķ������
+		BGM.loop(Clip.LOOP_CONTINUOUSLY);
+	}
+	private void playeat() {
+		// TODO �Զ����ɵķ������
+		if(playEat) {
+		eat.loop(Clip.LOOP_CONTINUOUSLY);
+		playEat=!playEat;
+		}else if(!playEat) {
+			eat.stop();
+		}
+	}
+    
+    
+	public void initSnake(int player) {
         for (int order=0;order<player;order++)
         {
-            len[order] = 3;
+            len[order] = 10;
             snakex[order][0] = 100;
             snakey[order][0] = 200+(order)*100;
             snakex[order][1] = 75;
@@ -138,20 +138,20 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
             score[order] = 0;
         }
         foodx = 25 + 25 * rand.nextInt(34);
-        foody = 75 + 25 * rand.nextInt(24);
+        foody = 25 + 25 * rand.nextInt(26);
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         this.setBackground(Color.WHITE);
-        title.paintIcon(this, g, 25, 11);
-        g.fillRect(25, 75, 850, 600);
-        g.setColor(Color.BLACK);
+        g.fillRect(25, 25, 850, 650);
+        g.setColor(Color.black);
+        g.drawString("��߷�" + msnack.scoreMax,200,15);
 
         for (int order=0;order<player;order++)
         {
-            g.drawString("Len " + len[order], 550+(order)*100, 35);
-            g.drawString("Score " + score[order], 550+(order)*100, 50);
+            g.drawString("Len " + len[order], 350+(order)*150, 15);
+            g.drawString("Score " + score[order], 400+(order)*150, 15);
 
             if(fx[order] == "R") {
                 right.paintIcon(this, g, snakex[order][0], snakey[order][0]);
@@ -172,7 +172,7 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
         if(isStarted == false) {
             g.setColor(Color.WHITE);
             g.setFont(new Font("arial", Font.BOLD, 40));
-            g.drawString("Press Space to Start", 300, 300);
+            g.drawString("SPACE to start", 300, 300);
         }
     }
 
@@ -183,7 +183,7 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        if(keyCode == KeyEvent.VK_SPACE) {
+        if(keyCode == KeyEvent.VK_SPACE || this.hasFocus()==false) {
             if(isFailed) {
                 isFailed = false;
                 initSnake(player);
@@ -192,9 +192,9 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
             }
             repaint();
             if(isStarted) {
-                playBGM();
+            	playBGM();
             }if(!isStarted){
-                stopBGM();
+            	stopBGM();
             }
         }
         if(( fx[0]!="D")&&(keyCode == KeyEvent.VK_W )) {
@@ -213,10 +213,11 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
             fx[1] = "U";
         }if( (fx[1]!="U")&&(keyCode == KeyEvent.VK_DOWN) ) {
             fx[1] = "D";
+        }else {
         }
     }
-
-    @Override
+    
+	@Override
     public void keyReleased(KeyEvent e) {
     }
     @Override
@@ -230,18 +231,18 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
             }else if(player==2){
                 msnack.winner(score,len,failure);
             }
-            initSnake(1);
-            initSnake(2);
             isFailed=!isFailed;
             isStarted=!isStarted;
+            initSnake(1);
+            initSnake(2);
         }
         if(isStarted && !isFailed) {
             for(int order=0;order<player;order++) {
                 for (int i = len[order] - 1; i > 0; i--) {
-                    snakex[order][i] = snakex[order][i - 1];
-                    snakey[order][i] = snakey[order][i - 1];
-                }
-
+                    	snakex[order][i] = snakex[order][i - 1];
+                        snakey[order][i] = snakey[order][i - 1];
+                    }
+                
                 if (fx[order] == "R") {
                     snakex[order][0] = snakex[order][0] + 25;
                     if (snakex[order][0] > 850)
@@ -260,7 +261,7 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
                     }
                 } else if (fx[order] == "U") {
                     snakey[order][0] = snakey[order][0] - 25;
-                    if (snakey[order][0] < 75)
+                    if (snakey[order][0] < 25)
                     {
                         snakey[order][0] = 650;
                         isFailed = true;
@@ -270,17 +271,17 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
                     snakey[order][0] = snakey[order][0] + 25;
                     if (snakey[order][0] > 670)
                     {
-                        snakey[order][0] = 75;
+                        snakey[order][0] = 25;
                         isFailed = true;
                         failure=order;
                     }
                 }
                 if (snakex[order][0] == foodx && snakey[order][0] == foody) {
-                    playEat=true;
+                	playEat=true;
                     len[order]++;
                     score[order] = score[order] + 10;
                     foodx = 25 + 25 * rand.nextInt(34);
-                    foody = 75 + 25 * rand.nextInt(24);
+                    foody = 25 + 25 * rand.nextInt(26);
                 }
 
                 for (int i = 1; i < len[order]; i++) {
@@ -290,30 +291,36 @@ public class Mpanel extends JPanel implements KeyListener, ActionListener {
                     }
                 }
             }
-
+            
             if(player==2) {
-                int p1=len[0];
-                int p2=len[1];
+            	int p1=len[0];
+            	int p2=len[1];
                 for(int i=1;i<len[0];i++) {
-                    if (snakex[0][i] == snakex[1][0] && snakey[0][i]==snakey[1][0]) {
+                	if (snakex[0][i] == snakex[1][0] && snakey[0][i]==snakey[1][0]) {
                         p1=i;
                         score[1]=score[1]+score[0]-(p1-3)*10;
                     }
                 }
-                for(int i=1;i<len[1];i++) {
-                    if (snakex[1][i] == snakex[0][0] && snakey[1][i]==snakey[0][0]) {
-                        p2=i;
-                        score[0]=score[0]+score[1]-(p2-3)*10;
+            	for(int i=1;i<len[1];i++) {
+                	if (snakex[1][i] == snakex[0][0] && snakey[1][i]==snakey[0][0]) {
+                		p2=i;
+                		score[0]=score[0]+score[1]-(p2-3)*10;
                     }
                 }
-                len[0]=p1;
+            	len[0]=p1;
                 len[1]=p2;
             }
-
+            
             repaint();
         }
         playeat();
+        if((score[0]<=score[1]?score[0]:score[1])%50==0) {
+        int n=(score[0]>=score[1]?score[0]:score[1])/50;
+        if(100-n*10>=0) {
+        timer.setDelay(100-n*10);
+        //System.out.println("delay:  "+timer.getDelay());
+        }
+      }
         timer.start();
     }
-
 }

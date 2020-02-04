@@ -1,6 +1,8 @@
 package GUI图形界面.简单窗口创建;
+
 import java.awt.*;
 import java.awt.event.*;
+
 public class dialog {
     //创建一个窗体;
     static Frame f = new Frame("java GUI 演示程序");
@@ -12,7 +14,7 @@ public class dialog {
     static Button b1 = new Button("会说话的按钮");
     static Button b2 = new Button("退出按钮");
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         //设置窗体的背景色，前景色
         //窗体的前景用于设置按钮标签，标签等的文字颜色
         f.setBackground(Color.orange);
@@ -45,33 +47,39 @@ public class dialog {
 
     }
 }
+
 //定义实现MouseListener接口的MouseEvent事件处理类
-class Button1Handler implements MouseListener{
+class Button1Handler implements MouseListener {
     //鼠标按键在组件上单击(按下并释放)时调用此方法
-    public void mouseClicked(MouseEvent e){
+    public void mouseClicked(MouseEvent e) {
         dialog.lb3.setText("你以单击鼠标！");
     }
+
     //鼠标进入到组件上方时调用此方法
-    public void mouseEntered(MouseEvent e){
+    public void mouseEntered(MouseEvent e) {
         dialog.lb3.setText("你已经进入到按钮上方");
     }
+
     //鼠标移动组件时调用此方法
-    public void mouseExited(MouseEvent e){
+    public void mouseExited(MouseEvent e) {
         dialog.lb3.setText("你已离开按钮上方");
-    //鼠标组件按下调用此方法
+        //鼠标组件按下调用此方法
     }
+
     public void mousePressed(MouseEvent e) {
         dialog.lb3.setText("你已按下按钮");
-    //鼠标离开组件时调用此方法
+        //鼠标离开组件时调用此方法
     }
-    public void mouseReleased(MouseEvent e){
+
+    public void mouseReleased(MouseEvent e) {
     }
 }
+
 //定义实现ActionListener接口的ActionEvent事件处理类
-class Button2Handler implements ActionListener{
+class Button2Handler implements ActionListener {
     //这个接口只有一个方法，因此事件发生时，系统会自动调用该方法
     //系统产生的ActionEvent事件对象被当做参数传递给该方法
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         System.exit(0);
     }
 }
